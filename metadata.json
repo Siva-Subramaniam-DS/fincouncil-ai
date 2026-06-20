@@ -1,0 +1,6 @@
+{
+  "name": "FinCouncil AI",
+  "description": "An AI-powered Financial Council where specialized AI agents collaborate to help you make better financial and investment decisions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

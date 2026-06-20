@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom glassy effects and glows */
+.glass-panel {
+  background: rgba(10, 15, 12, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.light-theme .glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Multi-theme color overrides using custom property mappings */
+.light-theme {
+  --color-white: #0a0f1d !important;
+  --color-zinc-50: #0a1220 !important;
+  --color-zinc-100: #0f172a !important;
+  --color-zinc-150: #1e293b !important;
+  --color-zinc-200: #1e293b !important;
+  --color-zinc-300: #334155 !important;
+  --color-zinc-400: #475569 !important;
+  --color-zinc-500: #64748b !important;
+  --color-zinc-600: #475569 !important;
+  --color-zinc-650: #475569 !important;
+  --color-zinc-700: #cbd5e1 !important;
+  --color-zinc-800: #e2e8f0 !important;
+  --color-zinc-900: #f8fafc !important;
+  --color-zinc-950: #ffffff !important;
+
+  --white: #0a0f1d !important;
+  --zinc-50: #0a1220 !important;
+  --zinc-100: #0f172a !important;
+  --zinc-150: #1e293b !important;
+  --zinc-200: #1e293b !important;
+  --zinc-300: #334155 !important;
+  --zinc-400: #475569 !important;
+  --zinc-500: #64748b !important;
+  --zinc-600: #475569 !important;
+  --zinc-650: #475569 !important;
+  --zinc-700: #cbd5e1 !important;
+  --zinc-800: #e2e8f0 !important;
+  --zinc-900: #f8fafc !important;
+  --zinc-950: #ffffff !important;
+
+  /* Background zones for light themed consensus boxes & feeds */
+  --color-emerald-950: #f0fdf4 !important;
+  --color-purple-950: #faf5ff !important;
+  --color-blue-950: #eff6ff !important;
+  --color-yellow-950: #fef9c3 !important;
+  --color-rose-950: #fff1f2 !important;
+  --color-cyan-950: #ecfeff !important;
+
+  /* Contrast text color transformations in light themes */
+  --color-emerald-200: #166534 !important;
+  --color-purple-200: #6b21a8 !important;
+  --color-blue-200: #1e3a8a !important;
+  --color-yellow-200: #854d0e !important;
+  --color-rose-200: #991b1b !important;
+  --color-cyan-200: #155e75 !important;
+  
+  --color-emerald-400: #15803d !important;
+  --color-purple-400: #7e22ce !important;
+  --color-blue-400: #1d4ed8 !important;
+  --color-yellow-400: #a16207 !important;
+  --color-rose-400: #b91c1c !important;
+  --color-cyan-400: #0e7490 !important;
+}
+
+/* Explicit text color overrides for light theme to ensure high readability */
+.light-theme .text-white,
+.light-theme .text-zinc-50,
+.light-theme .text-zinc-100 {
+  color: #0f172a !important; /* Elegant slate black for headers */
+}
+
+.light-theme .text-zinc-150,
+.light-theme .text-zinc-200 {
+  color: #1e293b !important; /* Deep dark slate for reading weights */
+}
+
+.light-theme .text-zinc-300,
+.light-theme .text-zinc-400,
+.light-theme .text-zinc-455 {
+  color: #334155 !important; /* Stately visible slate grey for body texts and prompts */
+}
+
+.light-theme .text-zinc-500,
+.light-theme .text-zinc-600,
+.light-theme .text-zinc-650 {
+  color: #475569 !important; /* Highly legibile medium-dark neutral grey */
+}
+
+
+/* Background & layout structure overrides */
+.light-theme aside {
+  background-color: #ffffff !important;
+  border-right-color: #e2e8f0 !important;
+}
+
+.light-theme header {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* Active buttons in nav items */
+.light-theme button.border-transparent {
+  color: #475569 !important;
+}
+
+.light-theme button.border-transparent:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Border overrides */
+.light-theme .border-white\/5,
+.light-theme .border-white\/10,
+.light-theme .border-white\/20,
+.light-theme .border-zinc-700,
+.light-theme .border-zinc-700\/50,
+.light-theme .border-zinc-800,
+.light-theme .border-emerald-500\/10,
+.light-theme .border-emerald-500\/25,
+.light-theme .border-blue-500\/25,
+.light-theme .border-yellow-500\/25 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Timeline, dialog buffers, and separators */
+.light-theme .divide-white\/5 > * + * {
+  border-color: #e2e8f0 !important;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
+}
+
+.light-theme .glass-panel-hover:hover {
+  background: rgba(16, 185, 129, 0.03) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+.neon-glow {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+}
+
+.neon-text {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Custom Scrollbar for dashboard elements */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.light-theme::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.6);
+}
+
