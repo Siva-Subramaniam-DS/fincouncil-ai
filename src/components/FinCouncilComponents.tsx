@@ -550,9 +550,19 @@ export const InteractiveLessonCard: React.FC<LessonCardProps> = ({ lesson, theme
   const isCorrect = selectedIdx === lesson.quiz.correctIndex;
 
   return (
-    <div id={`lesson-${lesson.id}`} className="glass-panel p-6 rounded-2xl border border-white/10 bg-zinc-900/20">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-zinc-500/10">
-        <span className="whitespace-nowrap px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 self-start">
+    <div id={`lesson-${lesson.id}`} className={`glass-panel p-6 rounded-2xl border ${
+      theme === 'dark' 
+        ? 'border-white/10 bg-zinc-900/20' 
+        : 'border-zinc-200 bg-white shadow-sm'
+    }`}>
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b ${
+        theme === 'dark' ? 'border-zinc-500/10' : 'border-zinc-200'
+      }`}>
+        <span className={`whitespace-nowrap px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded-full self-start ${
+          theme === 'dark'
+            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+            : 'bg-emerald-50 text-emerald-700 border border-emerald-600/20'
+        }`}>
           {lesson.category}
         </span>
         <div className="flex items-center gap-2 text-[10px] font-mono text-zinc-500 shrink-0 whitespace-nowrap">
@@ -562,42 +572,64 @@ export const InteractiveLessonCard: React.FC<LessonCardProps> = ({ lesson, theme
         </div>
       </div>
 
-      <h3 className="font-display text-lg font-bold text-zinc-100 mt-1">{lesson.title}</h3>
+      <h3 className={`font-display text-lg font-bold mt-1 ${
+        theme === 'dark' ? 'text-zinc-100' : 'text-zinc-900'
+      }`}>{lesson.title}</h3>
 
-      <p className="text-xs text-zinc-400 leading-relaxed mt-2 italic bg-zinc-900/40 p-2.5 rounded border border-white/5">
+      <p className={`text-xs leading-relaxed mt-2 italic p-2.5 rounded border ${
+        theme === 'dark'
+          ? 'text-zinc-400 bg-zinc-900/40 border-white/5'
+          : 'text-zinc-650 bg-zinc-50 border-zinc-200'
+      }`}>
         &quot;{lesson.summary}&quot;
       </p>
 
       <div className="mt-4 space-y-3">
         {lesson.content.map((p, i) => (
-          <p key={i} className="text-xs text-zinc-300 leading-relaxed">{p}</p>
+          <p key={i} className={`text-xs leading-relaxed ${
+            theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'
+          }`}>{p}</p>
         ))}
       </div>
 
       {/* Quiz Section */}
-      <div className="mt-6 pt-5 border-t border-white/10">
-        <div className="flex items-center gap-1.5 text-xs text-cyan-400 uppercase tracking-widest font-mono font-semibold mb-3">
+      <div className={`mt-6 pt-5 border-t ${
+        theme === 'dark' ? 'border-white/10' : 'border-zinc-200'
+      }`}>
+        <div className={`flex items-center gap-1.5 text-xs uppercase tracking-widest font-mono font-semibold mb-3 ${
+          theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'
+        }`}>
           <BookOpen size={14} />
           <span>Interactive Homework Quiz</span>
         </div>
         
-        <p className="text-xs font-semibold text-white mb-3">{lesson.quiz.question}</p>
+        <p className={`text-xs font-semibold mb-3 ${
+          theme === 'dark' ? 'text-white' : 'text-zinc-800'
+        }`}>{lesson.quiz.question}</p>
 
         <div className="space-y-2">
           {lesson.quiz.options.map((opt, oIdx) => {
             const isSelected = selectedIdx === oIdx;
             let btnClass = theme === 'dark'
-              ? 'bg-zinc-900/40 border-white/5 hover:border-white/20 text-zinc-305'
+              ? 'bg-zinc-900/40 border-white/5 hover:border-white/20 text-zinc-300'
               : 'bg-white border-zinc-200 hover:border-zinc-300 text-zinc-800 shadow-sm';
             
             if (isSelected) {
               btnClass = quizSubmitted 
                 ? isCorrect 
-                  ? 'bg-emerald-500/15 border-emerald-500 text-emerald-600 font-semibold' 
-                  : 'bg-rose-500/15 border-rose-500 text-rose-600 font-semibold'
-                : 'bg-cyan-500/10 border-cyan-400/80 text-cyan-700 font-semibold';
+                  ? (theme === 'dark'
+                      ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400 font-semibold'
+                      : 'bg-emerald-50 border-emerald-500 text-emerald-700 font-semibold')
+                  : (theme === 'dark'
+                      ? 'bg-rose-500/10 border-rose-500 text-rose-400 font-semibold'
+                      : 'bg-rose-50 border-rose-500 text-rose-700 font-semibold')
+                : (theme === 'dark'
+                    ? 'bg-cyan-500/10 border-cyan-500/50 text-cyan-300 font-semibold'
+                    : 'bg-cyan-50 border-cyan-400 text-cyan-800 font-semibold');
             } else if (quizSubmitted && oIdx === lesson.quiz.correctIndex) {
-              btnClass = 'bg-emerald-500/15 border-emerald-500 text-emerald-600 font-semibold'; // Show correct answer
+              btnClass = theme === 'dark'
+                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400 font-semibold'
+                : 'bg-emerald-50 border-emerald-500 text-emerald-700 font-semibold'; // Show correct answer
             }
 
             return (
@@ -609,7 +641,7 @@ export const InteractiveLessonCard: React.FC<LessonCardProps> = ({ lesson, theme
               >
                 <span>{opt}</span>
                 {quizSubmitted && oIdx === lesson.quiz.correctIndex && (
-                  <CheckCircle2 size={12} className="text-emerald-500 shrink-0" />
+                  <CheckCircle2 size={12} className={theme === 'dark' ? 'text-emerald-400 shrink-0' : 'text-emerald-600 shrink-0'} />
                 )}
               </button>
             );
@@ -617,7 +649,11 @@ export const InteractiveLessonCard: React.FC<LessonCardProps> = ({ lesson, theme
         </div>
 
         {/* Actions & Explanations */}
-        <div className={`mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/20 p-3 rounded-lg border border-white/5`}>
+        <div className={`mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg border ${
+          theme === 'dark'
+            ? 'bg-zinc-900/20 border-white/5'
+            : 'bg-zinc-50 border-zinc-200'
+        }`}>
           {!quizSubmitted ? (
             <>
               <span className="text-[10px] text-zinc-500 font-mono">Select an option to test your literacy:</span>
@@ -638,18 +674,28 @@ export const InteractiveLessonCard: React.FC<LessonCardProps> = ({ lesson, theme
           ) : (
             <div className="w-full">
               <div className="flex items-center justify-between mb-1.5">
-                <span className={`text-xs font-bold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}`}>
-                  {isCorrect ? '✓ Correct Answer!' : '✗ Opps, try again!'}
+                <span className={`text-xs font-bold ${
+                  isCorrect 
+                    ? (theme === 'dark' ? 'text-emerald-400' : 'text-emerald-700')
+                    : (theme === 'dark' ? 'text-rose-400' : 'text-rose-700')
+                }`}>
+                  {isCorrect ? '✓ Correct Answer!' : '✗ Oops, try again!'}
                 </span>
                 <button 
                   onClick={handleResetQuiz}
-                  className="text-[10px] text-cyan-400 hover:underline font-mono"
+                  className={`text-[10px] hover:underline font-mono ${
+                    theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'
+                  }`}
                 >
                   Reset quiz
                 </button>
               </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans mt-1">
-                <span className="font-semibold text-zinc-200">Explanation:</span> {lesson.quiz.explanation}
+              <p className={`text-[11px] leading-relaxed font-sans mt-1 ${
+                theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600'
+              }`}>
+                <span className={`font-semibold ${
+                  theme === 'dark' ? 'text-zinc-200' : 'text-zinc-800'
+                }`}>Explanation:</span> {lesson.quiz.explanation}
               </p>
             </div>
           )}
