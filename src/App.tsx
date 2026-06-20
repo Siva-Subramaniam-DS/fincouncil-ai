@@ -1103,13 +1103,13 @@ export default function App() {
               {/* Architecture Title Block */}
               <div className="border-b border-white/5 pb-6">
                 <span className="text-[10px] font-mono tracking-widest uppercase text-emerald-400">Technical Spec Matrix</span>
-                <h2 className="font-display font-extrabold text-3xl text-white mt-1.5 leading-none">FinCouncil AI Blueprint &amp; System Flow</h2>
-                <p className="text-xs text-zinc-400 mt-1">Under the hood of the sequential deliberation loops, MCP data routers, and Gemini Context models.</p>
+                <h2 className={`font-display font-extrabold text-3xl mt-1.5 leading-none ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>FinCouncil AI Blueprint &amp; System Flow</h2>
+                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-650'}`}>Under the hood of the sequential deliberation loops, MCP data routers, and Gemini Context models.</p>
               </div>
 
               {/* Interactive Vector Workflow Graphic */}
               <div className={`glass-panel p-6 rounded-2xl border border-white/10 transition-colors duration-300 ${theme === 'dark' ? 'bg-zinc-950/40' : 'bg-white'}`} id="architectural-blueprint-graphic">
-                <h4 className="text-xs uppercase tracking-wider font-mono text-zinc-400 mb-4 flex items-center gap-1">
+                <h4 className={`text-xs uppercase tracking-wider font-mono mb-4 flex items-center gap-1 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500'}`}>
                   <Layers size={14} className="text-emerald-400" />
                   System Blueprint Diagram
                 </h4>
@@ -1119,8 +1119,8 @@ export default function App() {
                   {/* Web Client Frame */}
                   <div className={`w-full lg:w-1/4 p-4 rounded-xl border border-emerald-500/25 transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0d100e]' : 'bg-emerald-50/20'} text-center`}>
                     <span className="text-[9px] text-zinc-500 font-mono tracking-wider block">UI PORTAL</span>
-                    <h5 className="font-display font-bold text-white text-xs mt-1">SaaS Interface Layout</h5>
-                    <p className="text-[10px] text-zinc-400 font-sans leading-snug mt-1.5">Client posts query inputs (e.g., &quot;Buy NVDA?&quot;)</p>
+                    <h5 className={`font-display font-bold text-xs mt-1 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>SaaS Interface Layout</h5>
+                    <p className={`text-[10px] font-sans leading-snug mt-1.5 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-650'}`}>Client posts query inputs (e.g., &quot;Buy NVDA?&quot;)</p>
                     <div className="mt-3.5 flex justify-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                     </div>
@@ -1137,8 +1137,8 @@ export default function App() {
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                     </div>
                     <span className="text-[9px] text-[#3b82f6] font-mono tracking-wider block">ADK AGENT CONTROLLER</span>
-                    <h5 className="font-display font-bold text-white text-xs mt-1">Session Context Loop &amp; Sequencer</h5>
-                    <p className="text-[10px] text-zinc-400 leading-snug mt-1.5">Executes steps (Executive → Market → News → Risk → Committee → Education) sequential context accumulation.</p>
+                    <h5 className={`font-display font-bold text-xs mt-1 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>Session Context Loop &amp; Sequencer</h5>
+                    <p className={`text-[10px] leading-snug mt-1.5 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-650'}`}>Executes steps (Executive → Market → News → Risk → Committee → Education) sequential context accumulation.</p>
                     
                     <div className={`mt-4 pt-3 border-t text-[9px] font-mono text-zinc-500 flex justify-between ${theme === 'dark' ? 'border-white/5' : 'border-zinc-200'}`}>
                       <span>Pro 2.5 context frame</span>
@@ -1154,8 +1154,8 @@ export default function App() {
                   {/* MCP Data Access Node */}
                   <div className={`w-full lg:w-1/4 p-4 rounded-xl border border-yellow-500/25 transition-colors duration-300 ${theme === 'dark' ? 'bg-[#120f09]' : 'bg-yellow-50/25'} text-center`}>
                     <span className="text-[9px] text-yellow-400 font-mono tracking-wider block">MCP DATA CONNECTOR</span>
-                    <h5 className="font-display font-bold text-white text-xs mt-1">Live Telemetry Adapter</h5>
-                    <p className="text-[10px] text-zinc-400 leading-snug mt-1.5">Siphons real-time transcript scrapes, news trends &amp; market vectors.</p>
+                    <h5 className={`font-display font-bold text-xs mt-1 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>Live Telemetry Adapter</h5>
+                    <p className={`text-[10px] leading-snug mt-1.5 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-650'}`}>Siphons real-time transcript scrapes, news trends &amp; market vectors.</p>
                     <span className={`text-[9px] font-mono mt-2 block py-1.5 rounded border transition-colors duration-300 ${theme === 'dark' ? 'bg-yellow-950/20 text-yellow-500 border-yellow-500/10' : 'bg-yellow-100/60 text-yellow-800 border-yellow-300 font-bold'}`}>Read/Write Context Protocol</span>
                   </div>
 
@@ -1186,13 +1186,13 @@ export default function App() {
                 ].map((spec, index) => (
                   <div key={index} className={`glass-panel p-5 rounded-2xl border bg-gradient-to-b ${spec.color} flex flex-col justify-between`}>
                     <div>
-                      <h4 className="font-display font-bold text-white text-base leading-tight">{spec.title}</h4>
-                      <p className="text-xs text-zinc-400 leading-relaxed mt-2.5">{spec.desc}</p>
+                      <h4 className={`font-display font-bold text-base leading-tight ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>{spec.title}</h4>
+                      <p className={`text-xs leading-relaxed mt-2.5 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600'}`}>{spec.desc}</p>
                     </div>
 
-                    <div className="mt-5 pt-4 border-t border-white/5 space-y-1.5">
+                    <div className={`mt-5 pt-4 border-t space-y-1.5 ${theme === 'dark' ? 'border-white/5' : 'border-zinc-200'}`}>
                       {spec.bullets.map((b, bIdx) => (
-                        <div key={bIdx} className="flex items-center gap-1.5 text-xs text-zinc-350">
+                        <div key={bIdx} className={`flex items-center gap-1.5 text-xs ${theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'}`}>
                           <CheckCircle2 size={11} className="text-emerald-400 shrink-0" />
                           <span>{b}</span>
                         </div>
